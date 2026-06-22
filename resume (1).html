@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Yamin — Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#04050D;
+    --void-2:#0A0E1F;
+    --panel:rgba(16,20,40,0.55);
+    --panel-soft:rgba(16,20,40,0.35);
+    --cyan:#2DE2FF;
+    --violet:#8B6BFF;
+    --magenta:#FF3DAE;
+    --text:#EAF0FF;
+    --text-dim:#8993B8;
+    --line:rgba(150,170,255,0.16);
+    --radius:18px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--void);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  ::selection{background:var(--cyan);color:#04050D;}
+  ::-webkit-scrollbar{width:9px;}
+  ::-webkit-scrollbar-track{background:var(--void);}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(var(--cyan),var(--violet));border-radius:10px;}
+
+  #particles{position:fixed;inset:0;z-index:0;display:block;}
+
+  .blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.35;z-index:0;pointer-events:none;}
+  .blob.b1{width:480px;height:480px;background:var(--violet);top:-160px;left:-140px;animation:blobFloat 16s ease-in-out infinite;}
+  .blob.b2{width:420px;height:420px;background:var(--cyan);bottom:-160px;right:-120px;animation:blobFloat 19s ease-in-out infinite reverse;}
+  .blob.b3{width:320px;height:320px;background:var(--magenta);top:40%;left:60%;opacity:.18;animation:blobFloat 22s ease-in-out infinite;}
+
+  @keyframes blobFloat{
+    0%,100%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(40px,-30px) scale(1.12);}
+  }
+
+  .wrap{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:54px 22px 90px;}
+
+  /* ---------- HERO ---------- */
+  .hero{text-align:center;margin-bottom:54px;}
+  .badge{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;letter-spacing:.08em;
+    color:var(--cyan);
+    background:rgba(45,226,255,0.08);
+    border:1px solid rgba(45,226,255,0.35);
+    padding:7px 14px;border-radius:30px;
+    margin-bottom:22px;
+  }
+  .dot-live{width:8px;height:8px;border-radius:50%;background:#33ffb0;box-shadow:0 0 0 0 rgba(51,255,176,.6);animation:pulseRing 1.8s infinite;}
+  @keyframes pulseRing{
+    0%{box-shadow:0 0 0 0 rgba(51,255,176,.55);}
+    70%{box-shadow:0 0 0 10px rgba(51,255,176,0);}
+    100%{box-shadow:0 0 0 0 rgba(51,255,176,0);}
+  }
+
+  .hero h1{
+    font-family:'Orbitron',sans-serif;
+    font-weight:800;
+    font-size:clamp(34px,7vw,64px);
+    margin:0 0 14px;
+    letter-spacing:.01em;
+    background:linear-gradient(100deg,var(--cyan),var(--violet) 45%,var(--magenta) 65%,var(--cyan));
+    background-size:300% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:shine 7s linear infinite;
+  }
+  @keyframes shine{
+    0%{background-position:0% 50%;}
+    100%{background-position:300% 50%;}
+  }
+  .hero .role{
+    font-family:'JetBrains Mono',monospace;
+    font-size:15px;
+    color:var(--text-dim);
+    min-height:22px;
+    max-width:640px;
+    margin:0 auto;
+    padding:0 16px;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+  .hero .role .cursor{display:inline-block;width:8px;background:var(--cyan);margin-left:2px;animation:blink 1s step-end infinite;}
+  @keyframes blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
+
+  /* ---------- Layout ---------- */
+  .layout{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start;}
+
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:0 20px 50px -20px rgba(0,0,0,0.6);
+  }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar{padding:30px 24px;position:sticky;top:24px;}
+
+  .hud{width:128px;height:128px;margin:0 auto 16px;position:relative;}
+  .hud .ring{position:absolute;inset:0;border-radius:50%;border:1.5px dashed rgba(45,226,255,0.55);animation:spin 14s linear infinite;}
+  .hud .ring2{position:absolute;inset:10px;border-radius:50%;border:1.5px dashed rgba(139,107,255,0.5);animation:spinRev 10s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  @keyframes spinRev{to{transform:rotate(-360deg);}}
+  .hud .photo{
+    position:absolute;inset:16px;border-radius:50%;overflow:hidden;
+    border:2px solid rgba(234,240,255,0.25);
+    box-shadow:0 0 26px rgba(45,226,255,0.35);
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg, rgba(45,226,255,0.18), rgba(139,107,255,0.22));
+    font-family:'Orbitron',sans-serif;
+    font-weight:700;
+    font-size:30px;
+    color:var(--text);
+  }
+  .hud .scan{
+    position:absolute;left:16px;right:16px;height:46%;
+    background:linear-gradient(rgba(45,226,255,0) 0%, rgba(45,226,255,.55) 50%, rgba(45,226,255,0) 100%);
+    mix-blend-mode:screen;border-radius:50%;
+    animation:scan 3.4s ease-in-out infinite;
+  }
+  @keyframes scan{
+    0%{transform:translateY(-120%);}
+    100%{transform:translateY(220%);}
+  }
+
+  .side-name{text-align:center;font-family:'Orbitron',sans-serif;font-weight:700;font-size:18px;margin:0 0 4px;}
+  .side-role{text-align:center;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--cyan);margin-bottom:24px;letter-spacing:.04em;}
+
+  .side-section{margin-bottom:26px;}
+  .side-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;text-transform:uppercase;
+    letter-spacing:.16em;color:var(--text-dim);margin:0 0 13px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .side-eyebrow::before{content:"";width:14px;height:1px;background:var(--violet);}
+  .side-eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);}
+
+  .contact-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
+  .contact-list li{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--text-dim);line-height:1.4;}
+  .contact-list svg{flex:0 0 auto;margin-top:2px;color:var(--cyan);}
+  .contact-list a{color:var(--text-dim);text-decoration:none;transition:color .2s;}
+  .contact-list a:hover{color:var(--cyan);}
+
+  .timeline{list-style:none;margin:0;padding:0;border-left:1.5px solid var(--line);}
+  .timeline li{position:relative;padding:0 0 18px 18px;}
+  .timeline li:last-child{padding-bottom:0;}
+  .timeline li::before{
+    content:"";position:absolute;left:-5.5px;top:3px;width:9px;height:9px;border-radius:50%;
+    background:var(--void-2);border:2px solid var(--cyan);box-shadow:0 0 8px rgba(45,226,255,.7);
+  }
+  .tl-date{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--cyan);display:block;margin-bottom:3px;}
+  .tl-title{font-size:13.5px;font-weight:600;color:var(--text);line-height:1.3;}
+  .tl-sub{font-size:11.5px;color:var(--text-dim);margin-top:2px;}
+  .tl-meta{font-size:11px;color:var(--magenta);margin-top:4px;font-family:'JetBrains Mono',monospace;}
+
+  .tagrow{display:flex;flex-wrap:wrap;gap:7px;}
+  .tag{
+    font-family:'JetBrains Mono',monospace;font-size:11px;padding:6px 10px;border-radius:7px;
+    background:rgba(45,226,255,0.07);color:var(--cyan);border:1px solid rgba(45,226,255,0.28);
+    opacity:0;transform:translateY(8px) scale(.95);
+    animation:tagIn .5s ease forwards;
+    transition:background .2s, transform .2s, box-shadow .2s;
+  }
+  .tag:hover{background:rgba(45,226,255,0.18);transform:translateY(-2px);box-shadow:0 6px 16px -6px rgba(45,226,255,.6);}
+  @keyframes tagIn{to{opacity:1;transform:translateY(0) scale(1);}}
+
+  .pill{
+    font-size:11.5px;padding:6px 12px;border-radius:30px;
+    background:rgba(139,107,255,0.1);color:#C9BFFF;border:1px solid rgba(139,107,255,0.35);
+    opacity:0;transform:translateY(8px);
+    animation:tagIn .5s ease forwards;
+  }
+
+  /* ---------- Main ---------- */
+  .main-col{display:flex;flex-direction:column;gap:22px;}
+  .card{padding:28px 30px;}
+  .sec-head{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;
+    color:var(--text-dim);margin:0 0 16px;display:flex;align-items:center;gap:10px;
+  }
+  .sec-head .idx{color:var(--cyan);}
+  .sec-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);}
+
+  .about-text{font-size:15px;line-height:1.75;color:#C7CCE3;margin:0;max-width:64ch;}
+  .about-text .hl{color:var(--cyan);font-weight:600;}
+
+  .proj-grid{display:flex;flex-direction:column;gap:16px;}
+  .repo-card{
+    position:relative;
+    background:var(--panel-soft);
+    border:1px solid var(--line);
+    border-radius:14px;padding:20px 22px;
+    transition:border-color .25s, box-shadow .25s;
+    transform-style:preserve-3d;
+    will-change:transform;
+  }
+  .repo-card:hover{border-color:rgba(45,226,255,.5);box-shadow:0 20px 40px -18px rgba(45,226,255,.35);}
+  .repo-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .repo-name{font-family:'Orbitron',sans-serif;font-weight:600;font-size:15.5px;color:var(--text);display:flex;align-items:center;gap:9px;}
+  .repo-name svg{color:var(--violet);}
+  .repo-link{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--cyan);text-decoration:none;
+    display:inline-flex;align-items:center;gap:5px;border:1px solid rgba(45,226,255,.35);
+    background:rgba(45,226,255,0.07);padding:6px 11px;border-radius:8px;white-space:nowrap;
+    transition:background .2s, transform .2s, box-shadow .2s;
+  }
+  .repo-link:hover{background:var(--cyan);color:#04050D;transform:translateX(2px);box-shadow:0 8px 20px -8px rgba(45,226,255,.7);}
+  .repo-link svg{transition:transform .2s;}
+  .repo-link:hover svg{transform:translate(2px,-2px);}
+  .repo-desc{font-size:13.5px;line-height:1.65;color:var(--text-dim);margin:10px 0 13px;}
+  .repo-foot{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .lang{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;}
+  .lang-dot{width:8px;height:8px;border-radius:50%;box-shadow:0 0 8px currentColor;}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .mini-head{font-family:'Orbitron',sans-serif;font-weight:600;font-size:13px;color:var(--text);margin:0 0 11px;letter-spacing:.02em;}
+  .mini-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
+  .mini-list li{font-size:13px;color:var(--text-dim);display:flex;align-items:flex-start;gap:9px;line-height:1.4;}
+  .mini-list li::before{content:"▹";color:var(--magenta);flex:0 0 auto;}
+
+  .timeline-main{list-style:none;margin:0;padding:0;border-left:1.5px solid var(--line);}
+  .timeline-main li{position:relative;padding:0 0 22px 22px;}
+  .timeline-main li:last-child{padding-bottom:0;}
+  .timeline-main li::before{
+    content:"";position:absolute;left:-6px;top:3px;width:10px;height:10px;border-radius:50%;
+    background:var(--void-2);border:2px solid var(--violet);box-shadow:0 0 9px rgba(139,107,255,.7);
+  }
+
+  /* ---------- reveal-on-scroll ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  .print-btn{
+    position:fixed;top:18px;right:18px;z-index:5;
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    background:rgba(16,20,40,0.7);color:var(--cyan);
+    border:1px solid rgba(45,226,255,.4);
+    padding:10px 16px;border-radius:30px;cursor:pointer;
+    display:flex;align-items:center;gap:8px;backdrop-filter:blur(10px);
+    transition:background .2s, transform .2s;
+  }
+  .print-btn:hover{background:rgba(45,226,255,.15);transform:translateY(-1px);}
+
+  @media (max-width:780px){
+    .layout{grid-template-columns:1fr;}
+    .sidebar{position:relative;top:0;}
+    .card{padding:24px 22px;}
+    .grid-2{grid-template-columns:1fr;}
+    .print-btn{display:none;}
+    .wrap{padding:42px 16px 70px;}
+    .hero .role{font-size:12.5px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- Print: clean light fallback ---------- */
+  @media print{
+    #particles,.blob,.print-btn{display:none !important;}
+    body{background:#fff;color:#10131B;}
+    .panel,.card,.repo-card{
+      background:#fff !important;backdrop-filter:none !important;
+      box-shadow:none !important;border:1px solid #E2E2E2 !important;
+    }
+    .hero h1{-webkit-text-fill-color:#10131B;background:none;color:#10131B;animation:none;}
+    .hero .role{color:#555;}
+    .side-name,.tl-title,.mini-head,.repo-name{color:#10131B;}
+    .about-text,.repo-desc,.tl-sub,.mini-list li,.contact-list li{color:#333;}
+    .reveal{opacity:1 !important;transform:none !important;}
+    .tag,.pill{animation:none !important;opacity:1 !important;transform:none !important;}
+    a{color:#0B6E99 !important;}
+    @page{margin:12mm;}
+  }
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+<div class="blob b1"></div>
+<div class="blob b2"></div>
+<div class="blob b3"></div>
+
+<button class="print-btn" onclick="window.print()">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+  Save as PDF
+</button>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="badge"><span class="dot-live"></span> OPEN TO WORK</div>
+    <h1>Muhammad Yamin</h1>
+    <div class="role"><span id="typewriter"></span><span class="cursor"></span></div>
+  </div>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="panel sidebar reveal">
+
+      <div class="hud">
+        <div class="ring"></div>
+        <div class="ring2"></div>
+        <div class="photo">MY</div>
+        <div class="scan"></div>
+      </div>
+
+      <p class="side-name">Muhammad Yamin</p>
+      <p class="side-role">WEB DEVELOPER</p>
+
+      <div class="side-section">
+        <p class="side-eyebrow">contact</p>
+        <ul class="contact-list">
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>+92 326 5511189</span>
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Faisalabad, Pakistan</span>
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <a href="mailto:myy475855@gmail.com">myy475855@gmail.com</a>
+          </li>
+          <li>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.238 1.84 1.238 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.305-5.467-1.334-5.467-5.93 0-1.31.467-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23a11.5 11.5 0 0 1 3-.405c1.02.005 2.045.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.62-5.475 5.92.435.375.81 1.11.81 2.235 0 1.615-.015 2.915-.015 3.31 0 .32.21.695.825.575C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+            <a href="https://github.com/myy475855-code" target="_blank" rel="noopener">github.com/myy475855-code</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="side-section">
+        <p class="side-eyebrow">education</p>
+        <ul class="timeline">
+          <li>
+            <span class="tl-date">2024 — Present</span>
+            <div class="tl-title">BS in Computer Science</div>
+            <div class="tl-sub">The University of Faisalabad (TUF)</div>
+          </li>
+          <li>
+            <span class="tl-date">2022 — 2024</span>
+            <div class="tl-title">Intermediate, ICS</div>
+            <div class="tl-sub">Aspire College, Kurrianwala</div>
+            <div class="tl-meta">Score: 740 / 1200</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="side-section">
+        <p class="side-eyebrow">stack</p>
+        <div class="tagrow">
+          <span class="tag" style="animation-delay:.05s">python</span>
+          <span class="tag" style="animation-delay:.1s">flask</span>
+          <span class="tag" style="animation-delay:.15s">html/css</span>
+          <span class="tag" style="animation-delay:.2s">javascript</span>
+          <span class="tag" style="animation-delay:.25s">rest apis</span>
+        </div>
+      </div>
+
+      <div class="side-section">
+        <p class="side-eyebrow">focus areas</p>
+        <div class="tagrow">
+          <span class="tag" style="animation-delay:.05s">web automation</span>
+          <span class="tag" style="animation-delay:.1s">api integration</span>
+          <span class="tag" style="animation-delay:.15s">git/github</span>
+          <span class="tag" style="animation-delay:.2s">front-end dev</span>
+        </div>
+      </div>
+
+      <div class="side-section">
+        <p class="side-eyebrow">languages</p>
+        <div class="tagrow">
+          <span class="pill" style="animation-delay:.05s">English — Conversational</span>
+          <span class="pill" style="animation-delay:.1s">Urdu — Native</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main-col">
+
+      <section class="panel card reveal">
+        <p class="sec-head"><span class="idx">01</span> About</p>
+        <p class="about-text">Full Stack Developer skilled in creating <span class="hl">user-friendly interfaces</span> and building APIs for smooth communication between app components. Works with <span class="hl">Python automation</span> and the Flask framework to develop reliable web applications, with a focus on solving problems and staying current with new technologies to improve user experience.</p>
+      </section>
+
+      <section class="panel card reveal">
+        <p class="sec-head"><span class="idx">02</span> Experience</p>
+        <ul class="timeline-main">
+          <li>
+            <span class="tl-date">2024 — 2025</span>
+            <div class="tl-title">Front-End &amp; API Developer</div>
+            <div class="tl-sub">NutriWell</div>
+            <p class="about-text" style="margin-top:8px;font-size:13.5px;">Pursuing higher education alongside the role to deepen technical skills and theoretical knowledge in computer science and software development.</p>
+          </li>
+          <li>
+            <span class="tl-date">2024</span>
+            <div class="tl-title">Web Developer</div>
+            <div class="tl-sub">Bug Resolver</div>
+            <p class="about-text" style="margin-top:8px;font-size:13.5px;">Completed a six-month internship with the organization.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel card reveal">
+        <p class="sec-head"><span class="idx">03</span> Projects</p>
+        <div class="proj-grid">
+
+          <article class="repo-card tilt">
+            <div class="repo-head">
+              <span class="repo-name">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                MYY Resume
+              </span>
+              <a class="repo-link" href="https://github.com/myy475855-code/MYY-RESUME.git" target="_blank" rel="noopener">
+                View repo
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
+              </a>
+            </div>
+            <p class="repo-desc">Source for this resume project — versioned and iterated on like any other build.</p>
+            <div class="repo-foot">
+              <span class="lang"><span class="lang-dot" style="background:#3572A5;color:#3572A5;"></span>Python</span>
+              <span class="lang">HTML/CSS</span>
+            </div>
+          </article>
+
+          <article class="repo-card tilt">
+            <div class="repo-head">
+              <span class="repo-name">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                More Repositories
+              </span>
+              <a class="repo-link" href="https://github.com/myy475855-code?tab=repositories" target="_blank" rel="noopener">
+                Browse all
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
+              </a>
+            </div>
+            <p class="repo-desc">A growing collection of front-end, API, and Python automation experiments.</p>
+            <div class="repo-foot">
+              <span class="lang"><span class="lang-dot" style="background:#2DE2FF;color:#2DE2FF;"></span>Flask</span>
+              <span class="lang">APIs</span>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="panel card reveal">
+        <p class="sec-head"><span class="idx">04</span> Strengths</p>
+        <div class="grid-2">
+          <div>
+            <p class="mini-head">What I bring</p>
+            <ul class="mini-list">
+              <li>Builds working front-ends paired with clean APIs</li>
+              <li>Comfortable automating tasks with Python</li>
+              <li>Ships reliable Flask-based web applications</li>
+            </ul>
+          </div>
+          <div>
+            <p class="mini-head">How I work</p>
+            <ul class="mini-list">
+              <li>Enjoys solving problems end-to-end</li>
+              <li>Stays current with new tools and techniques</li>
+              <li>Focused on smooth, user-friendly experiences</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- particle network background ---- */
+  var canvas = document.getElementById('particles');
+  var ctx = canvas.getContext('2d');
+  var W,H,particles;
+  var COUNT = 56;
+
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = document.documentElement.scrollHeight;
+  }
+  function makeParticles(){
+    particles = [];
+    for(var i=0;i<COUNT;i++){
+      particles.push({
+        x: Math.random()*W,
+        y: Math.random()*Math.min(H, window.innerHeight*1.4),
+        vx: (Math.random()-0.5)*0.25,
+        vy: (Math.random()-0.5)*0.25
+      });
+    }
+  }
+  function step(){
+    ctx.clearRect(0,0,W,H);
+    var viewH = window.innerHeight*1.4;
+    for(var i=0;i<particles.length;i++){
+      var p = particles[i];
+      p.x += p.vx; p.y += p.vy;
+      if(p.x<0||p.x>W) p.vx*=-1;
+      if(p.y<0||p.y>viewH) p.vy*=-1;
+    }
+    for(var i=0;i<particles.length;i++){
+      for(var j=i+1;j<particles.length;j++){
+        var a=particles[i], b=particles[j];
+        var dx=a.x-b.x, dy=a.y-b.y;
+        var dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist<130){
+          ctx.strokeStyle = 'rgba(120,160,255,'+(0.16*(1-dist/130))+')';
+          ctx.lineWidth=1;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    for(var i=0;i<particles.length;i++){
+      var p = particles[i];
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,1.6,0,Math.PI*2);
+      ctx.fillStyle='rgba(160,200,255,0.55)';
+      ctx.fill();
+    }
+    if(!reduceMotion) requestAnimationFrame(step);
+  }
+  resize(); makeParticles();
+  window.addEventListener('resize', function(){ resize(); makeParticles(); });
+  step();
+
+  /* ---- scroll reveal ---- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:0.12});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---- card tilt ---- */
+  if(!reduceMotion){
+    document.querySelectorAll('.tilt').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect();
+        var x = e.clientX - r.left, y = e.clientY - r.top;
+        var rx = ((y / r.height) - 0.5) * -7;
+        var ry = ((x / r.width) - 0.5) * 7;
+        card.style.transform = 'perspective(700px) rotateX('+rx+'deg) rotateY('+ry+'deg) translateY(-2px)';
+      });
+      card.addEventListener('mouseleave', function(){
+        card.style.transform = 'perspective(700px) rotateX(0) rotateY(0) translateY(0)';
+      });
+    });
+  }
+
+  /* ---- typewriter ---- */
+  var tw = document.getElementById('typewriter');
+  var msg = '> building_reliable_web_apps_with_python_and_flask';
+  if(reduceMotion){
+    tw.textContent = msg;
+  } else {
+    var i = 0;
+    (function type(){
+      if(i <= msg.length){
+        tw.textContent = msg.slice(0,i);
+        i++;
+        setTimeout(type, 38);
+      }
+    })();
+  }
+
+})();
+</script>
+
+</body>
+</html>
