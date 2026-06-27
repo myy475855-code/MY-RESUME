@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muhammad Yousaf Yamin — Web Developer</title>
+<title>Muhammad Yamin — Web Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -183,6 +183,7 @@
     transition:background .2s, transform .2s, box-shadow .2s;
   }
   .tag:hover{background:rgba(45,226,255,0.18);transform:translateY(-2px);box-shadow:0 6px 16px -6px rgba(45,226,255,.6);}
+  a.tag{text-decoration:none;display:inline-block;cursor:pointer;}
   @keyframes tagIn{to{opacity:1;transform:translateY(0) scale(1);}}
 
   .pill{
@@ -312,7 +313,7 @@
 
   <div class="hero">
     <div class="badge"><span class="dot-live"></span> OPEN TO WORK</div>
-    <h1>Muhammad Yousaf Yamin</h1>
+    <h1>Muhammad Yamin</h1>
     <div class="role"><span id="typewriter"></span><span class="cursor"></span></div>
   </div>
 
@@ -328,7 +329,7 @@
         <div class="scan"></div>
       </div>
 
-      <p class="side-name">Muhammad Yousaf Yamin</p>
+      <p class="side-name">Muhammad Yamin</p>
       <p class="side-role">WEB DEVELOPER</p>
 
       <div class="side-section">
@@ -428,24 +429,24 @@
       </section>
 
       <section class="panel card reveal">
-        <p class="sec-head"><span class="idx">03</span> Projects</p>
+        <p class="sec-head"><span class="idx">03</span> Major Projects</p>
         <div class="proj-grid">
 
           <article class="repo-card tilt">
             <div class="repo-head">
               <span class="repo-name">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                MYY Resume
+                LMS — Learning Management System
               </span>
-              <a class="repo-link" href="https://github.com/myy475855-code/MYY-RESUME.git" target="_blank" rel="noopener">
+              <a class="repo-link" href="https://github.com/myy475855-code/lms-in-C-" target="_blank" rel="noopener">
                 View repo
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
               </a>
             </div>
-            <p class="repo-desc">Source for this resume project — versioned and iterated on like any other build.</p>
+            <p class="repo-desc">University project built with C# Windows Forms and SQL Server. Teachers upload lectures and quizzes; students take quizzes with auto-grading.</p>
             <div class="repo-foot">
-              <span class="lang"><span class="lang-dot" style="background:#3572A5;color:#3572A5;"></span>Python</span>
-              <span class="lang">HTML/CSS</span>
+              <span class="lang"><span class="lang-dot" style="background:#178600;color:#178600;"></span>C#</span>
+              <span class="lang">SQL Server</span>
             </div>
           </article>
 
@@ -453,17 +454,53 @@
             <div class="repo-head">
               <span class="repo-name">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                More Repositories
+                Gemini API Integration
               </span>
-              <a class="repo-link" href="https://github.com/myy475855-code?tab=repositories" target="_blank" rel="noopener">
-                Browse all
+              <a class="repo-link" href="https://github.com/myy475855-code/Gemini-api-integrations" target="_blank" rel="noopener">
+                View repo
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
               </a>
             </div>
-            <p class="repo-desc">A growing collection of front-end, API, and Python automation experiments.</p>
+            <p class="repo-desc">A Python Flask app integrating Google's Gemini API to bring generative AI responses into a web interface.</p>
+            <div class="repo-foot">
+              <span class="lang"><span class="lang-dot" style="background:#3572A5;color:#3572A5;"></span>Python</span>
+              <span class="lang">Flask</span>
+            </div>
+          </article>
+
+          <article class="repo-card tilt">
+            <div class="repo-head">
+              <span class="repo-name">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                Google Login &amp; Signup Form
+              </span>
+              <a class="repo-link" href="https://github.com/myy475855-code/google-login-and-signup-form" target="_blank" rel="noopener">
+                View repo
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
+              </a>
+            </div>
+            <p class="repo-desc">Python Flask app with Google OAuth integration and a Bootstrap front-end for sign-in and registration.</p>
+            <div class="repo-foot">
+              <span class="lang"><span class="lang-dot" style="background:#3572A5;color:#3572A5;"></span>Python</span>
+              <span class="lang">OAuth · Bootstrap</span>
+            </div>
+          </article>
+
+          <article class="repo-card tilt">
+            <div class="repo-head">
+              <span class="repo-name">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                E-commerce Shop
+              </span>
+              <a class="repo-link" href="https://github.com/myy475855-code/MY-shop" target="_blank" rel="noopener">
+                View repo
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
+              </a>
+            </div>
+            <p class="repo-desc">A full e-commerce application covering browsing, cart, and checkout flows.</p>
             <div class="repo-foot">
               <span class="lang"><span class="lang-dot" style="background:#2DE2FF;color:#2DE2FF;"></span>Flask</span>
-              <span class="lang">APIs</span>
+              <span class="lang">Full Stack</span>
             </div>
           </article>
 
@@ -471,7 +508,81 @@
       </section>
 
       <section class="panel card reveal">
-        <p class="sec-head"><span class="idx">04</span> Strengths</p>
+        <p class="sec-head"><span class="idx">04</span> More Projects</p>
+        <p class="about-text" style="margin-bottom:20px;">A broader set of smaller builds and experiments — grouped by type, all open on <a href="https://github.com/myy475855-code?tab=repositories" target="_blank" rel="noopener" style="color:var(--cyan);">GitHub</a>.</p>
+
+        <div style="margin-bottom:20px;">
+          <p class="mini-head">Python &amp; Flask Apps</p>
+          <div class="tagrow">
+            <a class="tag" href="https://github.com/myy475855-code/currency-converter" target="_blank" rel="noopener">Currency Converter</a>
+            <a class="tag" href="https://github.com/myy475855-code/flask-portfilo" target="_blank" rel="noopener">Flask Portfolio</a>
+            <a class="tag" href="https://github.com/myy475855-code/flask-resume-creator" target="_blank" rel="noopener">Flask Resume Creator</a>
+            <a class="tag" href="https://github.com/myy475855-code/flask-weather-app" target="_blank" rel="noopener">Flask Weather App</a>
+            <a class="tag" href="https://github.com/myy475855-code/flask-qr-generator" target="_blank" rel="noopener">Flask QR Generator</a>
+            <a class="tag" href="https://github.com/myy475855-code/flask-barcode" target="_blank" rel="noopener">Flask Barcode</a>
+            <a class="tag" href="https://github.com/myy475855-code/flask-otp-sender" target="_blank" rel="noopener">Flask OTP Sender</a>
+            <a class="tag" href="https://github.com/myy475855-code/flask-Contact-OR-Form" target="_blank" rel="noopener">Flask Contact Form</a>
+            <a class="tag" href="https://github.com/myy475855-code/flask_digital_clock" target="_blank" rel="noopener">Flask Digital Clock</a>
+            <a class="tag" href="https://github.com/myy475855-code/MYY-Todo" target="_blank" rel="noopener">Todo App</a>
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <p class="mini-head">Games &amp; Interactive</p>
+          <div class="tagrow">
+            <a class="tag" href="https://github.com/myy475855-code/snake-game-flask" target="_blank" rel="noopener">Snake Game (Flask)</a>
+            <a class="tag" href="https://github.com/myy475855-code/Guess-the-number" target="_blank" rel="noopener">Guess the Number</a>
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <p class="mini-head">Frontend &amp; Animation (HTML/CSS/JS)</p>
+          <div class="tagrow">
+            <a class="tag" href="https://github.com/myy475855-code/animated-portfilo" target="_blank" rel="noopener">Animated Portfolio</a>
+            <a class="tag" href="https://github.com/myy475855-code/aminated-login-form" target="_blank" rel="noopener">Animated Login Form</a>
+            <a class="tag" href="https://github.com/myy475855-code/animated-birthday-card" target="_blank" rel="noopener">Animated Birthday Card</a>
+            <a class="tag" href="https://github.com/myy475855-code/animated-birthday-card-with-music" target="_blank" rel="noopener">Birthday Card + Music</a>
+            <a class="tag" href="https://github.com/myy475855-code/animated-slider" target="_blank" rel="noopener">Animated Slider</a>
+            <a class="tag" href="https://github.com/myy475855-code/a-unique-rotator" target="_blank" rel="noopener">Unique Rotator</a>
+            <a class="tag" href="https://github.com/myy475855-code/web-calculator" target="_blank" rel="noopener">Web Calculator</a>
+            <a class="tag" href="https://github.com/myy475855-code/birthday-wishing-website" target="_blank" rel="noopener">Birthday Wishing Site</a>
+            <a class="tag" href="https://github.com/myy475855-code/modren-login-form" target="_blank" rel="noopener">Modern Login Form</a>
+            <a class="tag" href="https://github.com/myy475855-code/my-student-time-portfilo" target="_blank" rel="noopener">Student Portfolio</a>
+            <a class="tag" href="https://github.com/myy475855-code/photos-slide" target="_blank" rel="noopener">Photo Slider</a>
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <p class="mini-head">Learning Management Systems</p>
+          <div class="tagrow">
+            <a class="tag" href="https://github.com/myy475855-code/lms-in-C-without-sql" target="_blank" rel="noopener">LMS in C# (No SQL)</a>
+            <a class="tag" href="https://github.com/myy475855-code/lms-simple-in-html-ccs-js" target="_blank" rel="noopener">Simple LMS (HTML/CSS/JS)</a>
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <p class="mini-head">Utility Tools</p>
+          <div class="tagrow">
+            <a class="tag" href="https://github.com/myy475855-code/python-duplicate-scanner" target="_blank" rel="noopener">Duplicate Scanner</a>
+            <a class="tag" href="https://github.com/myy475855-code/python-video-and-photo-separator" target="_blank" rel="noopener">Video &amp; Photo Separator</a>
+            <a class="tag" href="https://github.com/myy475855-code/secret-key-generator" target="_blank" rel="noopener">Secret Key Generator</a>
+            <a class="tag" href="https://github.com/myy475855-code/pptx-merger" target="_blank" rel="noopener">PPTX Merger</a>
+          </div>
+        </div>
+
+        <div style="margin-bottom:0;">
+          <p class="mini-head">Resume Sites &amp; Other</p>
+          <div class="tagrow">
+            <a class="tag" href="https://github.com/myy475855-code/MY-RESUME" target="_blank" rel="noopener">MY-RESUME</a>
+            <a class="tag" href="https://github.com/myy475855-code/MYY-RESUME" target="_blank" rel="noopener">MYY-RESUME</a>
+            <a class="tag" href="https://github.com/myy475855-code/elearning" target="_blank" rel="noopener">E-learning Project</a>
+            <a class="tag" href="https://github.com/myy475855-code/face-recognization-to-do" target="_blank" rel="noopener">Face Recognition Todo</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel card reveal">
+        <p class="sec-head"><span class="idx">05</span> Strengths</p>
         <div class="grid-2">
           <div>
             <p class="mini-head">What I bring</p>
